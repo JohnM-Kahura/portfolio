@@ -22,7 +22,7 @@ function TopBar({menuOpen,setmenuOpen}) {
                     </div>
                     <div className="itemContainer">
                         <GitHubIcon className="icon"/>
-                        <span><a href="https://github.com/JohnM-Kahura"target="_blank">GitHub</a></span>
+                        <span><a href="https://github.com/JohnM-Kahura"target="_blank" rel="noopener noreferrer">GitHub</a></span>
                     </div>
                 </div>
                 <div className="right">
