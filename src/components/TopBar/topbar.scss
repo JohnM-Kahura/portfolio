@@ -4,7 +4,7 @@
   height: 70px;
   background-color: white;
   color: $mainColor;
-  position: fixed;
+  position: fixed; 
   top: 0;
   z-index: 3;
   transition: all 1.5s ease;
@@ -22,11 +22,24 @@
         text-decoration: none;
         color: inherit;
         margin-right: 40px;
+        @include mobile{
+          display: none;
+         }
       }
       .itemContainer {
         display: flex;
         align-items: center;
         margin-left: 40px;
+        &.phone{
+          @include mobile{
+           display: none;
+          }
+        }
+        &.email{
+          @include mobile{
+           display: none;
+          }
+        }
         .icon {
           font-size: 20px;
           margin-right: 5px;

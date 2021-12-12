@@ -12,6 +12,9 @@
         align-items: center;
         justify-content: center;
         transition:all 1s ease;
+        @include mobile{
+            width: 200px;
+        }
         
         &.active{
             right: 0;
