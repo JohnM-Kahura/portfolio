@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import TopBar from "./components/TopBar/TopBar"
 import Intro from "./components/Intro/Intro"
 import Work from"./components/Work/Work"
@@ -6,9 +6,12 @@ import Portfolio from "./components/Portfolio/PortFolio"
 import Testimonials from "./components/Testimonials/Testimonials"
 import Contact from "./components/Contact/Contact"
 import Menu from "./components/Menu/Menu"
+import API from './baseURL'
 import "./app.scss"
+
 function App() {
   const [menuOpen, setmenuOpen] = useState(false)
+
   return (
     <div className="app">
 

@@ -1,9 +1,22 @@
 import React, { useEffect, useRef } from 'react'
 import { init } from 'ityped'
+import API from '../../baseURL'
 import "./intro.scss"
 function Intro() {
     const textRef = useRef()
-    useEffect(() => {
+//    const getLang => {
+       
+    
+//         const response = await API.get('intro');
+//         console.log(response);
+//         console.log(response.data);
+//       };
+    useEffect(() =>  {
+        
+    // getLang()
+    const response = API.get('intro');
+    console.log(response)
+    console.log(response.data)
         init(textRef.current, { 
             showCursor: true,
             backDelay:2000,
