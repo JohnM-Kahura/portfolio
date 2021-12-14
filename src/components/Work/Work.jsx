@@ -1,12 +1,27 @@
 import React, { useState } from 'react'
 import "./work.scss"
 import {workData} from "../../data"
+import { useEffect } from 'react';
+import API from '../../baseURL'
 export default function Work() {
 
     const [currentSlider, setcurrentSlider] = useState(0);
+const [work, setwork] = useState([])
+    useEffect(() => {
+        API.get('work/').then(res => {
+            //   console.log(res.data[0])
+              
+          setwork(res.data)
+            
+            
+            }).catch(err => {
+                console.log(err)
+            })
+             
+      }, [])
    const handleArrowClick=(direction)=>{
 direction==="left"? setcurrentSlider(currentSlider>0?currentSlider-1:2):
-setcurrentSlider(currentSlider< workData.length -1?currentSlider+1:0)
+setcurrentSlider(currentSlider< work.length -1?currentSlider+1:0)
 
    }
     return (
@@ -14,7 +29,7 @@ setcurrentSlider(currentSlider< workData.length -1?currentSlider+1:0)
             <div className="slider" style={{
                 transform:`translateX(-${currentSlider *100}vw)`
             }}>
-                {workData.map(d=>(
+                {work.map(d=>(
 
                 <div className="container">
                     <div className="item">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PortFolioList from '../portfoliolist/PortFolioList'
 import "./portfolio.scss"
+import API from '../../baseURL'
 import {
     featuredPortfolio,
     webPortfolio,
@@ -11,6 +12,11 @@ import {
 function PortFolio() {
     const [selected, setselected] = useState("featured")
     const [data, setdata] = useState([])
+    const [featured, setfeatured] = useState([])
+    const [web, setweb] = useState([])
+    const [mobile, setmobile] = useState([])
+    const [scripts, setscripts] = useState([])
+    
     const list = [
         {
             id: "featured",
@@ -32,23 +38,63 @@ function PortFolio() {
 
         },
     ]
+const filter= (dataList)=>{
+//    var filteredItems=[];
+//     for(let i = 0; i < dataList.length; i++){
+//         if(dataList[i]['type']==='Featured'){
+//             filteredItems.push(dataList[i])
+//         }else if(dataList[i]['type']==='Web Apps'){
+//             filteredItems.push(dataList[i])
+//     }
+//         else if(dataList[i]['type']==='Mobile Apps'){
+//             filteredItems.push(dataList[i])
+//     }
+//         else if(dataList[i]['type']==='Python Scripts'){
+//             filteredItems.push(dataList[i])
+//     }
+// }
 
+    // console.log(filteredItems)
+    // return filteredItems
+
+   
+}
     useEffect(() => {
+        API.get('portfolio/').then(res => {
+        //   console.log(res.data[0])
+          
+      setdata(res.data)
+        
+        
+        }).catch(err => {
+            console.log(err)
+        })
+        
+
+       
+
+       
         switch (selected) {
             case "featured":
-                setdata(featuredPortfolio)
+                
+                const featuredItems= data.filter(item =>item['type']==='Featured')
+                setdata(featuredItems)
                 break;
             case "web":
-                setdata(webPortfolio)
+                const web= data.filter(item =>item['type']==='Web Apps')
+                setdata(web)
                 break;
             case "mobile":
-                setdata(mobilePortfolio)
+                const mobile= data.filter(item =>item['type']==='Mobile Apps')
+                setdata(mobile)
                 break;
             case "scripts":
-                setdata(scriptsPortfolio)
+                const scripts= data.filter(item =>item['type']==='Python Scripts')
+                setdata(scripts)
                 break;
             default:
-                setdata(featuredPortfolio)
+                const feturedItems= data.filter(item =>item['type']==='Featured')
+                setdata(feturedItems)
                 break;
         }
     }, [selected])
