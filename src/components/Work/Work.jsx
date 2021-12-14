@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import "./work.scss"
-import {workData} from "../../data"
+
 import { useEffect } from 'react';
 import API from '../../baseURL'
+import WorkList from '../Worklist/WorkList';
 export default function Work() {
 
     const [currentSlider, setcurrentSlider] = useState(0);
 const [work, setwork] = useState([])
     useEffect(() => {
         API.get('work/').then(res => {
-            //   console.log(res.data[0])
+         
               
           setwork(res.data)
             
@@ -41,11 +42,15 @@ setcurrentSlider(currentSlider< work.length -1?currentSlider+1:0)
                                  <h2>{d.title}</h2>
                                  <p>{d.desc}
                                      </p>
-                                     <span>Projects</span>
+                                     <span>Built with</span>
+                                    {d.built.map(d=>(
+                                        
+                                        <WorkList frontend={d.frontend} language={d.language} backend={d.backend} database={d.database} worthy_mention={d.worthy_mention}/> 
+                                    ))} 
                              </div>
                          </div>
                          <div className="right">
-
+<img src={d.img}  />
                          </div>
                     </div>
                     </div>

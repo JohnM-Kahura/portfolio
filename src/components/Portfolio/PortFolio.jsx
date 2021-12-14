@@ -3,7 +3,7 @@ import PortFolioList from '../portfoliolist/PortFolioList'
 import "./portfolio.scss"
 import API from '../../baseURL'
 import {
-    featuredPortfolio,
+    featuredPortfolio, 
     webPortfolio,
     mobilePortfolio,
 
